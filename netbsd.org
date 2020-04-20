@@ -1,19 +1,18 @@
-# -*- org-html-postamble-format:(("en" "<p class=\"author\">Author: %a
-# (%e)</p><p>Made on emacs org-mode with <a
-# href=\"https://jessekelly881-rethink.surge.sh/\">Rethink</a></p>"));
+# -*- org-html-postamble-format:(("en" "<p class="author">Author: %a
+# (Reddit: <a href="https://www.reddit.com/user/e17i">u/e17i</a>)</p><p>Made on
+# emacs org-mode with <a href="https://jessekelly881-rethink.surge.sh/">Rethink</a></p>"));
 # org-html-postamble: t -*-
 #
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="rethink.css" />
 #+OPTIONS: toc:nil num:nil htmp-style:nil
 #+AUTHOR: Jörg Kollmann
-#+EMAIL: e17i#uni-bremen.de
 #+TITLE: Installation of NetBSD on a Mac Mini
 
 * What's the problem?
 
 Over the easter days I was planning to resurrect my old ppc based Mac Mini and
-to replace the old osx 10.4 by a newer, but still BSD-based operating system.
-The first try was to install OpenBSD, which went quite smooth and without
+to replace the old osx 10.4 with a newer, but still BSD-based operating system.
+The first try was to install OpenBSD, which went quite smoothly and without
 great hassles. Fine.
 
 But, as I made my first steps into the unix land many years ago using NetBSD
@@ -42,18 +41,20 @@ portions until you find the missing detail. The four major points for me were:
     bsd disklabels while the Mac Mini firmware (Open Firmware 3.0) needs an
     apple ~pdisk~-style partition table. OpenBSD apparently overcomes this by
     using just two basic ~pdisk~ partitions---a small boot partition and the rest, which is
-    then partitioned using bsd disklabels. NetBSD for macppc seems to need all partitions to be
+    then partitioned using bsd disklabels. NetBSD for macppc seemingly needs all partitions to be
     ~pdisk~ partitions, which means you have to leave out the partitioning stage
     of ~sysinst~ and instead manually partition your disk (and manually generate an
     adjacent =/etc/fstab=).
-  - When doing the first reboot after installing the base sets, you find that
+  - When doing the first reboot after installing the base sets, you'll find that
     the bootloader, =ofwboot.xcf=, which is able to boot a Mac Mini from CD,
     panics. Instead you need to use =ofwboot.elf=, which is hidden on the
     installation cd in some subdirectory.
   - Finally, your system boots, but stays with a white screen. This is because
     NetBSD on the Mac Mini doesn't know to activate the screen console. So you
     need to configure an Open Firmware boot command writing something on the
-    screen before loading the boot program, this way activating the console.
+    screen before loading the boot program, this way activating the
+    console.
+    (This also seems to occur when quitting a running X11 server..)
 
 * Step by step
 
@@ -93,10 +94,13 @@ Some other useful commands at this prompt:
 #+BEGIN_SRC screen
 printenv
 dir cd:,\macppc
+devalias
 #+END_SRC
 They show the current configuration and list the contents of some Open
 Firmware accessable directory. So you can make sure you have the correct paths
 in your configuration.
+The third one can be used to define alternate boot procedures,
+probably useful for update/recovery.
 
 ** Insert Install CD and boot.
 
