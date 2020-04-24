@@ -262,11 +262,12 @@ With the last command you made it! The system now reboots into NetBSD solely
 from disk. You may again call ~sysinst~ to install further sets, and you
 should follow the post installation steps of the installation guide.
 
-* Finish
+* Finally
 
 At least for me, quite a few iterations were needed to get here. Nevertheless,
 having NetBSD finally running again on real hardware feels a little bit like
 coming home after a long time.
+[[./netbsd.png]]
 
 * Upgrade
 
