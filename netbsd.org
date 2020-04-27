@@ -10,8 +10,8 @@
 
 * What's the problem?
 
-Over the easter days I was planning to resurrect my old ppc based Mac Mini and
-to replace the old osx 10.4 with a newer, but still BSD-based operating system.
+Over the easter days I was planning to resurrect my trusty ppc based Mac Mini and
+to replace the old OSX 10.4 with a newer, but still BSD-based operating system.
 The first try was to install OpenBSD, which went quite smoothly and without
 great hassles. Fine.
 
@@ -33,10 +33,11 @@ range of different systems, it is quite a challenge to extract the
 needed information---each time hitting a problem you have to re-read large
 portions until you find the missing detail. The four major points for me were:
 
-  - The system is not able to boot directly off the bsd root file system. This
-    means you need at least a small mac hfs-formatted partition to place the
-    bootloader in. This is not done automatically and the =hfsutils= are not
-    part of the base system.
+  - The system is not able to boot directly off the bsd root file
+    system. This means you need at least a small mac hfs-formatted
+    partition to place the bootloader in. This is not done
+    automatically and the =hfsutils=, needed to access such a fs, are
+    not part of the base system.
   - When partitioning and formatting the disk, the ~sysinst~ tool generates
     bsd disklabels while the Mac Mini firmware (Open Firmware 3.0) needs an
     apple ~pdisk~-style partition table. OpenBSD apparently overcomes this by
@@ -59,16 +60,17 @@ portions until you find the missing detail. The four major points for me were:
 * Step by step
 
 When you still have an osx/ppc install cd, first use that to partition your disk,
-saving you some steps. On my 100GB disk, I created four partitions: a 1MB hfs
+saving you some steps. On my 100GB disk, I created four partitions: a 4 MB hfs
 boot partition, a large Apple/UX main partition and two small (16 and 5 GB)
-partitions for swap and tmp. In the following, I assume you don't have such a
-cd at hand.
+partitions for swap and tmp. Also, use that chance to copy over both
+=ofwboot.*= files and the =netbsd.macppc= installation kernel to the
+hfs boot partition. Then you can skip a few steps, being able to
+directly boot from disk (and later on have a recovery partition at
+hand). From there, you can also install the sets downloading them on
+the fly via HTTP, so you don't need to burn a cd.
 
-Also, making the boot partition large enough to put in the installation kernel
-and probably also some of the base installation sets may come in handy. This
-way, you would have a recovery/update partition on board. For me, that idea
-came too late, so I'm at least planning to mis-use the swap partition
-(hfs-formatting it) temporarily as an update partition when doing updates.
+In the following, I assume you don't have a mac osx installation cd at
+hand.
 
 ** Download a NetBSD/macppc install iso and burn it to a cd.
 
@@ -175,7 +177,7 @@ replace that line), without needing to start all over again.
 #+BEGIN_SRC screen
 mkdir /mnt/etc
 ed /mnt/etc/fstab
-i
+a
 /dev/wd0a / ffs rw 1 1
 /dev/wd0b none swap sw 0 0
 /dev/wd0g /tmp ffs rw 1 2
@@ -242,7 +244,7 @@ hcopy /mnt/macppc/installation/ofwboot.elf :
 hcopy /mnt/netbsd.macppc :
 #+END_SRC
 
-** Finally: setup Open Firmware for NetBSD boot.
+** Setup Open Firmware for NetBSD boot.
 
 Again, reboot into Open Firmware prompt. Now, you may also eject the cd.
 The boot device and boot file can now be setup to use the boot loader on the
@@ -269,10 +271,8 @@ having NetBSD finally running again on real hardware feels a little bit like
 coming home after a long time.
 [[./netbsd.png]]
 
-* Upgrade
-
-As I used a NetBSD 8.x installation cd burned some time ago, I'm now eager to
-prepare a smooth upgrade method. As these days, using cds as upgrade media
-seems a little bit outdated, I'm planning to do this completely off the net.
-It should also be possible to define Open Firmware aliases to easily initiate
-the upgrade. Stay tuned..
+On the NetBSD mailing lists other fancy modes of installation are
+discussed, including writing a small cd image containing the boot
+programs and then dumping it directly onto the harddisks first
+sectors. While this may be a way of performing a more automated
+installation, it doesn't seem to be a convenient way for now.
