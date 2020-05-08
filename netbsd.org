@@ -1,10 +1,12 @@
 # -*- org-html-postamble-format:(("en" "<p class="author">Author: %a
-# (Reddit: <a href="https://www.reddit.com/user/e17i">u/e17i</a>)</p><p>Made on
+# (Reddit: <a href="https://www.reddit.com/user/e17i">u/e17i</a>)</p> <p>Made on
 # emacs org-mode with <a href="https://jessekelly881-rethink.surge.sh/">Rethink</a></p>"));
 # org-html-postamble: t -*-
 #
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="rethink.css" />
-#+OPTIONS: toc:nil num:nil htmp-style:nil
+#+HTML_HEAD_EXTRA: <img src="image1.jpg" />
+#+OPTIONS: toc:nil num:nil html-style:nil
+# #+INFOJS_OPT: view:info toc:nil path:org-info.js
 #+AUTHOR: Jörg Kollmann
 #+TITLE: Installation of NetBSD on a Mac Mini
 
@@ -57,7 +59,7 @@ portions until you find the missing detail. The four major points for me were:
     console.
     (This also seems to occur when quitting a running X11 server..)
 
-* Step by step
+* Preparations
 
 When you still have an osx/ppc install cd, first use that to partition your disk,
 saving you some steps. On my 100GB disk, I created four partitions: a 4 MB hfs
@@ -72,6 +74,7 @@ the fly via HTTP, so you don't need to burn a cd.
 In the following, I assume you don't have a mac osx installation cd at
 hand.
 
+* Step by step
 ** Download a NetBSD/macppc install iso and burn it to a cd.
 
 When in an adventurous mood, instead set up a net boot facility on another
@@ -269,6 +272,7 @@ should follow the post installation steps of the installation guide.
 At least for me, quite a few iterations were needed to get here. Nevertheless,
 having NetBSD finally running again on real hardware feels a little bit like
 coming home after a long time.
+#+CAPTION: this is how UNIX desktops looked like in older times
 [[./netbsd.png]]
 
 On the NetBSD mailing lists other fancy modes of installation are

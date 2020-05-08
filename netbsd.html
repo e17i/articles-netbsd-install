@@ -3,184 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-27 Mo. 19:39 -->
+<!-- 2020-05-08 Fr. 19:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Installation of NetBSD on a Mac Mini</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jörg Kollmann" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
 <link rel="stylesheet" type="text/css" href="rethink.css" />
+<img src="image1.jpg" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,9 +62,9 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Installation of NetBSD on a Mac Mini</h1>
 
-<div id="outline-container-orgcf4e259" class="outline-2">
-<h2 id="orgcf4e259">What's the problem?</h2>
-<div class="outline-text-2" id="text-orgcf4e259">
+<div id="outline-container-org7d7a691" class="outline-2">
+<h2 id="org7d7a691">What's the problem?</h2>
+<div class="outline-text-2" id="text-org7d7a691">
 <p>
 Over the easter days I was planning to resurrect my trusty ppc based Mac Mini and
 to replace the old OSX 10.4 with a newer, but still BSD-based operating system.
@@ -254,9 +84,9 @@ I thought I'd write a little bit about my experiences in case someone else
 </div>
 </div>
 
-<div id="outline-container-org907b6bb" class="outline-2">
-<h2 id="org907b6bb">Overview</h2>
-<div class="outline-text-2" id="text-org907b6bb">
+<div id="outline-container-orgdd6a2ed" class="outline-2">
+<h2 id="orgdd6a2ed">Overview</h2>
+<div class="outline-text-2" id="text-orgdd6a2ed">
 <p>
 When installing a current NetBSD into an intel based vm, the <code>sysinst</code> tool covers
 the installation process quite well. The reasons why this doesn't work so well
@@ -295,9 +125,9 @@ console.
 </div>
 </div>
 
-<div id="outline-container-orgf70f858" class="outline-2">
-<h2 id="orgf70f858">Step by step</h2>
-<div class="outline-text-2" id="text-orgf70f858">
+<div id="outline-container-org8e6e9bd" class="outline-2">
+<h2 id="org8e6e9bd">Preparations</h2>
+<div class="outline-text-2" id="text-org8e6e9bd">
 <p>
 When you still have an osx/ppc install cd, first use that to partition your disk,
 saving you some steps. On my 100GB disk, I created four partitions: a 4 MB hfs
@@ -315,10 +145,15 @@ In the following, I assume you don't have a mac osx installation cd at
 hand.
 </p>
 </div>
+</div>
 
-<div id="outline-container-org396d86d" class="outline-3">
-<h3 id="org396d86d">Download a NetBSD/macppc install iso and burn it to a cd.</h3>
-<div class="outline-text-3" id="text-org396d86d">
+<div id="outline-container-org257c010" class="outline-2">
+<h2 id="org257c010">Step by step</h2>
+<div class="outline-text-2" id="text-org257c010">
+</div>
+<div id="outline-container-orgf172ab6" class="outline-3">
+<h3 id="orgf172ab6">Download a NetBSD/macppc install iso and burn it to a cd.</h3>
+<div class="outline-text-3" id="text-orgf172ab6">
 <p>
 When in an adventurous mood, instead set up a net boot facility on another
 computer..
@@ -326,9 +161,9 @@ computer..
 </div>
 </div>
 
-<div id="outline-container-orgf982dbc" class="outline-3">
-<h3 id="orgf982dbc">Reboot, going into the firmware.</h3>
-<div class="outline-text-3" id="text-orgf982dbc">
+<div id="outline-container-orgd1d2aaa" class="outline-3">
+<h3 id="orgd1d2aaa">Reboot, going into the firmware.</h3>
+<div class="outline-text-3" id="text-orgd1d2aaa">
 <p>
 Hold down <code>CMD/OPT/O/F</code> keys while starting.
 This brings you to the Open Firmware prompt.
@@ -336,9 +171,9 @@ This brings you to the Open Firmware prompt.
 </div>
 </div>
 
-<div id="outline-container-orgd758b33" class="outline-3">
-<h3 id="orgd758b33">For the next steps, configure the system to always boot into ofw.</h3>
-<div class="outline-text-3" id="text-orgd758b33">
+<div id="outline-container-org2583471" class="outline-3">
+<h3 id="org2583471">For the next steps, configure the system to always boot into ofw.</h3>
+<div class="outline-text-3" id="text-org2583471">
 <div class="org-src-container">
 <pre class="src src-screen">setenv auto-boot? false
 reset-all
@@ -369,9 +204,9 @@ probably useful for update/recovery.
 </div>
 </div>
 
-<div id="outline-container-orgcd2a8a5" class="outline-3">
-<h3 id="orgcd2a8a5">Insert Install CD and boot.</h3>
-<div class="outline-text-3" id="text-orgcd2a8a5">
+<div id="outline-container-org55c34c5" class="outline-3">
+<h3 id="org55c34c5">Insert Install CD and boot.</h3>
+<div class="outline-text-3" id="text-org55c34c5">
 <div class="org-src-container">
 <pre class="src src-screen">boot cd:,\ofwboot.xcf netbsd.macppc
 </pre>
@@ -394,9 +229,9 @@ You may choose the <b>Utility menu</b> and
 </div>
 </div>
 
-<div id="outline-container-org2180304" class="outline-3">
-<h3 id="org2180304">Partition your disk.</h3>
-<div class="outline-text-3" id="text-org2180304">
+<div id="outline-container-org5dea137" class="outline-3">
+<h3 id="org5dea137">Partition your disk.</h3>
+<div class="outline-text-3" id="text-org5dea137">
 <p>
 Go to the <b>Utility menu</b> and <b>Run /bin/sh</b>, then call <b>pdisk</b>.
 </p>
@@ -432,9 +267,9 @@ new partitions.
 </div>
 </div>
 
-<div id="outline-container-orga3a46e7" class="outline-3">
-<h3 id="orga3a46e7">Format the root and tmp partition.</h3>
-<div class="outline-text-3" id="text-orga3a46e7">
+<div id="outline-container-orgcf41192" class="outline-3">
+<h3 id="orgcf41192">Format the root and tmp partition.</h3>
+<div class="outline-text-3" id="text-orgcf41192">
 <div class="org-src-container">
 <pre class="src src-screen">newfs /dev/rwd0a
 newfs /dev/rwd0g
@@ -448,9 +283,9 @@ format them accordingly.
 </div>
 </div>
 
-<div id="outline-container-orgbc414a2" class="outline-3">
-<h3 id="orgbc414a2">Mount it and write /etc/fstab</h3>
-<div class="outline-text-3" id="text-orgbc414a2">
+<div id="outline-container-orgab66184" class="outline-3">
+<h3 id="orgab66184">Mount it and write /etc/fstab</h3>
+<div class="outline-text-3" id="text-orgab66184">
 <div class="org-src-container">
 <pre class="src src-screen">mount /dev/wd0a /mnt
 </pre>
@@ -476,7 +311,7 @@ a
 /dev/wd0a / ffs rw 1 1
 /dev/wd0b none swap sw 0 0
 /dev/wd0g /tmp ffs rw 1 2
-<span style="color: #b0c4de;">.</span>
+<span style="color: #483d8b;">.</span>
 wq
 </pre>
 </div>
@@ -488,15 +323,15 @@ Afterwards, unmount the disk and return to <code>sysinst</code>.
 
 <div class="org-src-container">
 <pre class="src src-screen">umount /mnt
-<span style="color: #00ffff;">exit</span>
+<span style="color: #a020f0;">exit</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7d87f2d" class="outline-3">
-<h3 id="org7d87f2d">Actually install the system.</h3>
-<div class="outline-text-3" id="text-org7d87f2d">
+<div id="outline-container-orgbc3abaa" class="outline-3">
+<h3 id="orgbc3abaa">Actually install the system.</h3>
+<div class="outline-text-3" id="text-orgbc3abaa">
 <p>
 When reaching this point, you made it behind most of the obstacles and now get
 to a place where other NetBSD users comfortably have been led to by <code>sysinst</code>. Select
@@ -507,9 +342,9 @@ of the system, as the installation manual suggests.
 </div>
 </div>
 
-<div id="outline-container-org712efc8" class="outline-3">
-<h3 id="org712efc8">Prepare the boot partition.</h3>
-<div class="outline-text-3" id="text-org712efc8">
+<div id="outline-container-org403f847" class="outline-3">
+<h3 id="org403f847">Prepare the boot partition.</h3>
+<div class="outline-text-3" id="text-org403f847">
 <p>
 Now, once again, a small detour. The <code>hfsutils</code> must be built to format the
 boot partition and to copy over the boot program. To do this, the system must
@@ -544,7 +379,7 @@ configuration and use the menu to download and install <code>pkgsrc</code>. Then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-screen"><span style="color: #b0c4de;">cd</span> /usr/pkgsrc/sysutils/hfsutils
+<pre class="src src-screen"><span style="color: #483d8b;">cd</span> /usr/pkgsrc/sysutils/hfsutils
 make
 make install
 make clean
@@ -567,9 +402,9 @@ hcopy /mnt/netbsd.macppc :
 </div>
 </div>
 
-<div id="outline-container-org3a35512" class="outline-3">
-<h3 id="org3a35512">Setup Open Firmware for NetBSD boot.</h3>
-<div class="outline-text-3" id="text-org3a35512">
+<div id="outline-container-org5ca7d41" class="outline-3">
+<h3 id="org5ca7d41">Setup Open Firmware for NetBSD boot.</h3>
+<div class="outline-text-3" id="text-org5ca7d41">
 <p>
 Again, reboot into Open Firmware prompt. Now, you may also eject the cd.
 The boot device and boot file can now be setup to use the boot loader on the
@@ -582,7 +417,7 @@ starting to boot.
 <pre class="src src-screen">setenv boot-device hd:2,ofwboot.elf
 setenv boot-file hd:3,/netbsd
 setenv auto-boot? true
-setenv boot-command .<span style="color: #ffa07a;">" Booting NetBSD..."</span> cr <span style="color: #ffa07a;">" screen"</span> output boot
+setenv boot-command .<span style="color: #8b2252;">" Booting NetBSD..."</span> cr <span style="color: #8b2252;">" screen"</span> output boot
 reset-all
 </pre>
 </div>
@@ -596,15 +431,20 @@ should follow the post installation steps of the installation guide.
 </div>
 </div>
 
-<div id="outline-container-org67c762b" class="outline-2">
-<h2 id="org67c762b">Finally</h2>
-<div class="outline-text-2" id="text-org67c762b">
+<div id="outline-container-org758883a" class="outline-2">
+<h2 id="org758883a">Finally</h2>
+<div class="outline-text-2" id="text-org758883a">
 <p>
 At least for me, quite a few iterations were needed to get here. Nevertheless,
 having NetBSD finally running again on real hardware feels a little bit like
 coming home after a long time.
-<img src="./netbsd.png" alt="netbsd.png" />
 </p>
+
+<div class="figure">
+<p><img src="./netbsd.png" alt="netbsd.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>this is how UNIX desktops looked like in older times</p>
+</div>
 
 <p>
 On the NetBSD mailing lists other fancy modes of installation are
@@ -618,7 +458,7 @@ installation, it doesn't seem to be a convenient way for now.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jörg Kollmann
-(Reddit: <a href="https://www.reddit.com/user/e17i">u/e17i</a>)</p><p>Made on
+(Reddit: <a href="https://www.reddit.com/user/e17i">u/e17i</a>)</p> <p>Made on
 emacs org-mode with <a href="https://jessekelly881-rethink.surge.sh/">Rethink</a></p>
 </div>
 </body>
