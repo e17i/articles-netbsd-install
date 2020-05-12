@@ -4,7 +4,7 @@
 # org-html-postamble: t -*-
 #
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="chrome/rethink.css" />
-#+HTML_HEAD_EXTRA: <img src="image1.jpg" />
+#+HTML_HEAD_EXTRA: <img src="image1.jpg" /><div style="padding:2vh"><a style="font-weight:900; text-decoration:none" href="/">Home</a></div>
 #+OPTIONS: toc:nil num:nil html-style:nil
 # #+INFOJS_OPT: view:info toc:nil path:chrome/org-info.js
 #+AUTHOR: Jörg Kollmann
