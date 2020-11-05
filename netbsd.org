@@ -4,11 +4,11 @@
 # org-html-postamble: t -*-
 #
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/chrome/rethink.css" />
-#+HTML_HEAD_EXTRA: <img src="/chrome/image1.jpg" /><div style="padding:2vh"><a style="font-weight:900; text-decoration:none" href="/">Home</a></div>
 #+OPTIONS: toc:nil num:nil html-style:nil
 # #+INFOJS_OPT: view:info toc:nil path:chrome/org-info.js
 #+AUTHOR: Jörg Kollmann
 #+TITLE: Installation of NetBSD on a Mac Mini
+#+DATE: 2020-05-19
 
 * What's the problem?
 
@@ -280,3 +280,5 @@ discussed, including writing a small cd image containing the boot
 programs and then dumping it directly onto the harddisks first
 sectors. While this may be a way of performing a more automated
 installation, it doesn't seem to be a convenient way for now.
+
+Feel free to leave a comment on [[https://www.reddit.com/r/joergsworld/comments/jnmzsl/experiences_installing_netbsd_on_a_ppc_based_mac/][Reddit]]

@@ -3,20 +3,19 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-19 Di. 13:44 -->
+<!-- 2020-11-05 Do. 20:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Installation of NetBSD on a Mac Mini</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jörg Kollmann" />
 <link rel="stylesheet" type="text/css" href="/chrome/rethink.css" />
-<img src="/chrome/image1.jpg" /><div style="padding:2vh"><a style="font-weight:900; text-decoration:none" href="/">Home</a></div>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -59,12 +58,15 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<img src="/chrome/image1.jpg"/><div style="padding:2vh"><a style="font-weight:900; text-decoration:none" href="/">Home</a><span style="float: right">last changed: 2020-05-19</span></div>
+</div>
 <div id="content">
 <h1 class="title">Installation of NetBSD on a Mac Mini</h1>
 
-<div id="outline-container-org3d44aea" class="outline-2">
-<h2 id="org3d44aea">What's the problem?</h2>
-<div class="outline-text-2" id="text-org3d44aea">
+<div id="outline-container-org2a8d83c" class="outline-2">
+<h2 id="org2a8d83c">What's the problem?</h2>
+<div class="outline-text-2" id="text-org2a8d83c">
 <p>
 Over the easter days I was planning to resurrect my trusty ppc based Mac Mini and
 to replace the old OSX 10.4 with a newer, but still BSD-based operating system.
@@ -84,9 +86,9 @@ I thought I'd write a little bit about my experiences in case someone else
 </div>
 </div>
 
-<div id="outline-container-org2a352bf" class="outline-2">
-<h2 id="org2a352bf">Overview</h2>
-<div class="outline-text-2" id="text-org2a352bf">
+<div id="outline-container-org3a1355b" class="outline-2">
+<h2 id="org3a1355b">Overview</h2>
+<div class="outline-text-2" id="text-org3a1355b">
 <p>
 When installing a current NetBSD into an intel based vm, the <code>sysinst</code> tool covers
 the installation process quite well. The reasons why this doesn't work so well
@@ -125,9 +127,9 @@ console.
 </div>
 </div>
 
-<div id="outline-container-org5a78db9" class="outline-2">
-<h2 id="org5a78db9">Preparations</h2>
-<div class="outline-text-2" id="text-org5a78db9">
+<div id="outline-container-org8828980" class="outline-2">
+<h2 id="org8828980">Preparations</h2>
+<div class="outline-text-2" id="text-org8828980">
 <p>
 When you still have an osx/ppc install cd, first use that to partition your disk,
 saving you some steps. On my 100GB disk, I created four partitions: a 4 MB hfs
@@ -147,13 +149,13 @@ hand.
 </div>
 </div>
 
-<div id="outline-container-org08df8e4" class="outline-2">
-<h2 id="org08df8e4">Step by step</h2>
-<div class="outline-text-2" id="text-org08df8e4">
+<div id="outline-container-orgd1f9920" class="outline-2">
+<h2 id="orgd1f9920">Step by step</h2>
+<div class="outline-text-2" id="text-orgd1f9920">
 </div>
-<div id="outline-container-org0f22f2d" class="outline-3">
-<h3 id="org0f22f2d">Download a NetBSD/macppc install iso and burn it to a cd.</h3>
-<div class="outline-text-3" id="text-org0f22f2d">
+<div id="outline-container-org04af689" class="outline-3">
+<h3 id="org04af689">Download a NetBSD/macppc install iso and burn it to a cd.</h3>
+<div class="outline-text-3" id="text-org04af689">
 <p>
 When in an adventurous mood, instead set up a net boot facility on another
 computer..
@@ -161,9 +163,9 @@ computer..
 </div>
 </div>
 
-<div id="outline-container-org0656eca" class="outline-3">
-<h3 id="org0656eca">Reboot, going into the firmware.</h3>
-<div class="outline-text-3" id="text-org0656eca">
+<div id="outline-container-org17ccc3b" class="outline-3">
+<h3 id="org17ccc3b">Reboot, going into the firmware.</h3>
+<div class="outline-text-3" id="text-org17ccc3b">
 <p>
 Hold down <code>CMD/OPT/O/F</code> keys while starting.
 This brings you to the Open Firmware prompt.
@@ -171,9 +173,9 @@ This brings you to the Open Firmware prompt.
 </div>
 </div>
 
-<div id="outline-container-org0cbfa43" class="outline-3">
-<h3 id="org0cbfa43">For the next steps, configure the system to always boot into ofw.</h3>
-<div class="outline-text-3" id="text-org0cbfa43">
+<div id="outline-container-orge5a423d" class="outline-3">
+<h3 id="orge5a423d">For the next steps, configure the system to always boot into ofw.</h3>
+<div class="outline-text-3" id="text-orge5a423d">
 <div class="org-src-container">
 <pre class="src src-screen">setenv auto-boot? false
 reset-all
@@ -204,9 +206,9 @@ probably useful for update/recovery.
 </div>
 </div>
 
-<div id="outline-container-orge54d895" class="outline-3">
-<h3 id="orge54d895">Insert Install CD and boot.</h3>
-<div class="outline-text-3" id="text-orge54d895">
+<div id="outline-container-org8681f21" class="outline-3">
+<h3 id="org8681f21">Insert Install CD and boot.</h3>
+<div class="outline-text-3" id="text-org8681f21">
 <div class="org-src-container">
 <pre class="src src-screen">boot cd:,\ofwboot.xcf netbsd.macppc
 </pre>
@@ -229,9 +231,9 @@ You may choose the <b>Utility menu</b> and
 </div>
 </div>
 
-<div id="outline-container-org1122f69" class="outline-3">
-<h3 id="org1122f69">Partition your disk.</h3>
-<div class="outline-text-3" id="text-org1122f69">
+<div id="outline-container-org5fd567e" class="outline-3">
+<h3 id="org5fd567e">Partition your disk.</h3>
+<div class="outline-text-3" id="text-org5fd567e">
 <p>
 Go to the <b>Utility menu</b> and <b>Run /bin/sh</b>, then call <b>pdisk</b>.
 </p>
@@ -267,9 +269,9 @@ new partitions.
 </div>
 </div>
 
-<div id="outline-container-orgf113439" class="outline-3">
-<h3 id="orgf113439">Format the root and tmp partition.</h3>
-<div class="outline-text-3" id="text-orgf113439">
+<div id="outline-container-orge1ec1ac" class="outline-3">
+<h3 id="orge1ec1ac">Format the root and tmp partition.</h3>
+<div class="outline-text-3" id="text-orge1ec1ac">
 <div class="org-src-container">
 <pre class="src src-screen">newfs /dev/rwd0a
 newfs /dev/rwd0g
@@ -283,9 +285,9 @@ format them accordingly.
 </div>
 </div>
 
-<div id="outline-container-org4c528c0" class="outline-3">
-<h3 id="org4c528c0">Mount it and write /etc/fstab</h3>
-<div class="outline-text-3" id="text-org4c528c0">
+<div id="outline-container-org3257be7" class="outline-3">
+<h3 id="org3257be7">Mount it and write /etc/fstab</h3>
+<div class="outline-text-3" id="text-org3257be7">
 <div class="org-src-container">
 <pre class="src src-screen">mount /dev/wd0a /mnt
 </pre>
@@ -329,9 +331,9 @@ Afterwards, unmount the disk and return to <code>sysinst</code>.
 </div>
 </div>
 
-<div id="outline-container-orga6ed00e" class="outline-3">
-<h3 id="orga6ed00e">Actually install the system.</h3>
-<div class="outline-text-3" id="text-orga6ed00e">
+<div id="outline-container-org62379fb" class="outline-3">
+<h3 id="org62379fb">Actually install the system.</h3>
+<div class="outline-text-3" id="text-org62379fb">
 <p>
 When reaching this point, you made it behind most of the obstacles and now get
 to a place where other NetBSD users comfortably have been led to by <code>sysinst</code>. Select
@@ -342,9 +344,9 @@ of the system, as the installation manual suggests.
 </div>
 </div>
 
-<div id="outline-container-org91db277" class="outline-3">
-<h3 id="org91db277">Prepare the boot partition.</h3>
-<div class="outline-text-3" id="text-org91db277">
+<div id="outline-container-org2bd9e0a" class="outline-3">
+<h3 id="org2bd9e0a">Prepare the boot partition.</h3>
+<div class="outline-text-3" id="text-org2bd9e0a">
 <p>
 Now, once again, a small detour. The <code>hfsutils</code> must be built to format the
 boot partition and to copy over the boot program. To do this, the system must
@@ -402,9 +404,9 @@ hcopy /mnt/netbsd.macppc :
 </div>
 </div>
 
-<div id="outline-container-org537cc3d" class="outline-3">
-<h3 id="org537cc3d">Setup Open Firmware for NetBSD boot.</h3>
-<div class="outline-text-3" id="text-org537cc3d">
+<div id="outline-container-org6746f4c" class="outline-3">
+<h3 id="org6746f4c">Setup Open Firmware for NetBSD boot.</h3>
+<div class="outline-text-3" id="text-org6746f4c">
 <p>
 Again, reboot into Open Firmware prompt. Now, you may also eject the cd.
 The boot device and boot file can now be setup to use the boot loader on the
@@ -431,9 +433,9 @@ should follow the post installation steps of the installation guide.
 </div>
 </div>
 
-<div id="outline-container-orga8d7f2a" class="outline-2">
-<h2 id="orga8d7f2a">Finally</h2>
-<div class="outline-text-2" id="text-orga8d7f2a">
+<div id="outline-container-orgc743a3b" class="outline-2">
+<h2 id="orgc743a3b">Finally</h2>
+<div class="outline-text-2" id="text-orgc743a3b">
 <p>
 At least for me, quite a few iterations were needed to get here. Nevertheless,
 having NetBSD finally running again on real hardware feels a little bit like
@@ -452,6 +454,10 @@ discussed, including writing a small cd image containing the boot
 programs and then dumping it directly onto the harddisks first
 sectors. While this may be a way of performing a more automated
 installation, it doesn't seem to be a convenient way for now.
+</p>
+
+<p>
+Feel free to leave a comment on <a href="https://www.reddit.com/r/joergsworld/comments/jnmzsl/experiences_installing_netbsd_on_a_ppc_based_mac/">Reddit</a>
 </p>
 </div>
 </div>
